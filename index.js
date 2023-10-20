@@ -86,13 +86,27 @@ const titles = [
 
 //Array of authors and the book they wrote
 //"--- wrote --- in ---"
-
+books.forEach((books)=> console.log(books.authorFirst  +  books.authorLast  +  " wrote " + books.name + " in "  +  books.publishDate))
 //Sort books from oldest to most recent
-
+console.log(books.sort((a,b)=>a.value - b.value));
 //sort books alphabetically
+console.log(books.sort((a, b) => {
+  const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+  const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
 
+  return 0;
+}));
 //Find who wrote War and Peace
-
+function waronly(read) {
+  return read.authorFirst + read.authorLast 
+}
+console.log(books.find(waronly));
 //how many books were written before 1900?
 
 //was there at least one book published within the last 100 years?
