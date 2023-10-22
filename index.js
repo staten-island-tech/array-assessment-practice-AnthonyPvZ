@@ -25,7 +25,7 @@ const books = [
     authorFirst: "JK",
     authorLast: "Rowling",
     publishDate: 1997,
-    genre: ["fantasy", , "fiction"],
+    genre: ["fantasy", "fiction"],
   },
   {
     name: "Ulysses",
@@ -127,8 +127,11 @@ function outofdate(books){
 console.log(books.every(outofdate));
 //print a list of books that "includes" the genre historical
 const flattenedbooks = books.flat();
-const historicalbooks = flattenedbooks.filter(function(history){
-  return history.genre = "historical"
-}); 
-console.log(historicalbooks);
+const historybooks = flattenedbooks.filter(function(books){
+  return books.genre.includes("historical")
+});
+
+historybooks.forEach((books)=> console.log(books));
+
+
 
