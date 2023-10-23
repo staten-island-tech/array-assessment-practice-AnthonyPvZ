@@ -85,14 +85,15 @@ const titles = [
 ];
 
 //Array of authors and the book they wrote
-const array = books.map((books)=> ({author:books.authorFirst, name:books.name}))
+const array = books.map((books)=> ({author:books.authorFirst + " " + books.authorLast, book:books.name}))
 console.log(array);
 //"--- wrote --- in ---"
-books.forEach((books)=> console.log(books.authorFirst  +  books.authorLast  +  " wrote " + books.name + " in "  +  books.publishDate));
+books.forEach((books)=> console.log(books.authorFirst  + " " + books.authorLast  +  " wrote " + books.name + " in "  +  books.publishDate));
 //Sort books from oldest to most recent
-console.log(books.sort((a,b)=>a.value - b.value));
+const sorted = books.toSorted((a,b)=> a.publishDate - b.publishDate)
+console.log(sorted);
 //sort books alphabetically
-console.log(books.sort((a, b) => {
+console.log(books.toSorted((a, b) => {
   const nameA = a.name.toUpperCase(); // ignore upper and lowercase
   const nameB = b.name.toUpperCase(); // ignore upper and lowercase
   if (nameA < nameB) {
@@ -130,7 +131,6 @@ const flattenedbooks = books.flat();
 const historybooks = flattenedbooks.filter(function(books){
   return books.genre.includes("historical")
 });
-
 historybooks.forEach((books)=> console.log(books));
 
 
